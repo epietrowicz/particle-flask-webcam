@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    container_name: flask-webcam
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+    devices:
+      - "/dev/video2:/dev/video2"
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token eyJhIjoiYmIxNGYwYTViZDhjMzI2ZmZmNDE1Y2JkYzgzNGI0ODUiLCJ0IjoiZjc3MzVjOTAtNWQ2OC00YjE4LWFkNWQtYzA5ZDRhZTdlN2E2IiwicyI6Ik5UYzROalpqTVdJdFlqVmhZaTAwWTJReExUaGxZamd0TURka05ESTFaalJoTkdRNSJ9
+    networks:
+      - flask-net
+    depends_on:
+      - app
+    restart: unless-stopped
+
+networks:
+  flask-net:
+    driver: bridge
