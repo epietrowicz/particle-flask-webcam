@@ -10,7 +10,7 @@ services:
       - "/dev/video2:/dev/video2"
   cloudflared:
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --token <your_token>
+    command: tunnel --no-autoupdate run --token <your_token_here>
     networks:
       - flask-net
     depends_on:
