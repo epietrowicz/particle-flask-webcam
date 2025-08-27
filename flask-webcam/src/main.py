@@ -1,4 +1,4 @@
-from flask import Flask, Response, render_template
+from flask import Flask, Response, render_template, request
 from camera import generate_frames
 
 app = Flask(__name__)
@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    real_ip = request.headers.get("CF-Connecting-IP", request.remote_addr)
+    print(f"Real IP: {real_ip}")
     return render_template("index.html")
 
 

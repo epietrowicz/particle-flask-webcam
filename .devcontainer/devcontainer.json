@@ -1,6 +1,6 @@
 {
     "name": "Flask Webcam Dev Container",
-    "dockerComposeFile": "../flask-webcam/docker-compose.yaml",
+    "dockerComposeFile": "../docker-compose.yaml",
     "service": "app",
     "workspaceFolder": "/app",
     "remoteUser": "root",
