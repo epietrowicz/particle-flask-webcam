@@ -1,7 +1,6 @@
 services:
   app:
     build: .
-    container_name: flask-webcam
     ports:
       - "5001:5001"
     volumes:
@@ -11,8 +10,6 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     command: tunnel --no-autoupdate run --token <your_token_here>
-    networks:
-      - flask-net
     depends_on:
       - app
     restart: unless-stopped
